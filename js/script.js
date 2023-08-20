@@ -37,12 +37,23 @@ function showList(array) {
 }
 
 document.addEventListener("DOMContentLoaded", (e) => {
+  // Esta función filtra el array dejando solo las strings en el mismo
   function filterStrFromArr(arr) {
-    arr.filter((element) => typeof element === "string");
+    return arr.filter((element) => typeof element === "string");
   }
-  showList(
-    strangeArray
-      .filter((element) => typeof element === "string")
-      .sort((a, b) => a.localeCompare(b))
-  );
+  // Ordena alfabéticamente el array
+  // Se comparan las strings en minúscula para evitar conflictos
+  function orderAlphabetically(arr) {
+    return arr.sort((a, b) => {
+      if (a.toLowerCase() < b.toLowerCase()) {
+        return -1;
+      }
+      return 1;
+    });
+  }
+  // Guardamos en una constante el array filtrado
+  const filteredArray = filterStrFromArr(strangeArray);
+
+  // Mostramos el array en pantalla ordenado
+  showList(orderAlphabetically(filteredArray));
 });
