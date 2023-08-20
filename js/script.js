@@ -37,6 +37,12 @@ function showList(array) {
 }
 
 document.addEventListener("DOMContentLoaded", (e) => {
-  // Escribe tu solución aquí
-  // Sugerencia de cómo mostrar el array => showList(strangeArray);
+  function filterStrFromArr(arr) {
+    arr.filter((element) => typeof element === "string");
+  }
+  showList(
+    strangeArray
+      .filter((element) => typeof element === "string")
+      .sort((a, b) => a.localeCompare(b))
+  );
 });
